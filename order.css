@@ -1,0 +1,292 @@
+body, html {
+    height: 100%;
+}
+
+.container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+.orderNav {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+        text-decoration: none;
+        color: textColor;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    p {
+        text-decoration: underline;
+    }
+}
+
+@media (min-width: tablet) and (max-width: desktop) {
+    .orderNav {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width:tablet) {
+    .orderNav {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width:mobile) {
+    .orderNav {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:smallMobile) {
+    .orderNav {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:350px) {
+    .orderNav {
+        width: 70%;
+    }
+}
+
+.arrowImg {
+    width: 12px;
+    height: 12px;
+}
+
+.checkout__form {
+    margin: 60px 0;
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+        margin: 30px 0;
+        font-family: headerFont;
+        font-size: 25px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+.checkout__formItem {
+    width: 47%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width:tablet) {
+    .checkout__form {
+        flex-direction: column;
+    }
+
+    .checkout__formItem {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+
+mixin fieldStyle {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+
+    &:focus {
+        outline: none;
+        border-bottom: 1px solid textColor;
+    }
+}
+
+
+.checkout__formField_invalid {
+    border-bottom: 1px solid red;
+}
+
+.errorSign {
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    padding-bottom: 1px;
+    color: red;
+    border: 1px solid red;
+    border-radius: 50%;
+    align-self: flex-end;
+    margin-top: -1.8em;
+    visibility: hidden;
+}
+
+#userEmailError, 
+#userPhoneError,
+#userCountryError,
+#userCityError,
+#userAddressError {
+    margin-top: -1.4em;
+}
+
+.errorMessageEmail,
+.errorMessagePhone {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-size: small;
+}
+
+.formField__wrapper {
+    height: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.formField__wrapper_hidden {
+    display: none;
+}
+
+.checkbox__wrapper {
+    margin: 2em 0;
+}
+
+.errorMessageEmail,
+.errorMessagePhone {
+    color: red;
+}
+
+.checkout__checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+
+
+.userInfo {
+    border: none;
+    padding: 0;
+    display: grid;
+    grid-template-areas: 'name surname'
+        'tel .';
+    gap: 20px;
+}
+
+.submitButton {
+    font-size: 16px;
+    font-family: generalFont;
+    width: 60%;
+    height: 50px;
+    padding: 16px;
+    background-color: #1d1b19;
+    color: white;
+    border: none;
+  
+    &:hover {
+      cursor: pointer;
+      opacity: 0.4;
+    }
+}
+
+input[type="radio"].customRadio {
+    display: none;
+}
+
+
+.radio__wrapper label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border: 2px solid #F1EAE4;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+
+.radio__wrapper label:hover {
+    background-color: #fcb77f;
+    border-color: rgb(255, 225, 190)fff;
+}
+
+
+input[type="radio"].customRadio:checked + label {
+    background-color: #282828;
+    border-color: #ffffff;
+    color: rgb(255, 255, 255);
+}
+
+
+.section {
+    margin: 10px;
+}
+
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    border-radius: 30px;
+}
+
+
+.form-sections {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.order {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+}
+
+.popup-message {
+    display: none;
+    min-width: 200px;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    pointer-events: none;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    transition: all;
+    
+}
+.popup-message.show {
+    display: flex; 
+    -webkit-animation: fadeInOut 0.5s;
+    animation: fadeInOut 1s;
+  }
+  
+ 
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+
